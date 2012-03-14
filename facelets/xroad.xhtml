@@ -7,9 +7,49 @@
 	xmlns:t="http://myfaces.apache.org/tomahawk"
 >
 
-<ws:page id="xroadRootPage" showFunctionMenu="true">
-	<h:form>
-        
-	</h:form>
-</ws:page>
+	<ws:page id="xroadRootPage" showFunctionMenu="true" stylesheeturls="/idegaweb/bundles/com.idega.developer.bundle/resources/style/developer.css">
+		<h:form>
+			<t:div styleClass="wf_block maximizedvertically" title="#{localizedStrings['com.idega.xroad']['xroad_server']}">
+				<div class="wf_titlebar">
+					<div class="wf_titlebar_text">
+						<h:outputText value="#{localizedStrings['com.idega.xroad']['xroad_server']}"/>
+					</div>
+				</div>
+				<div class="wf_blockmainarea">
+					<div class="developer">
+						<fieldset>
+							<div class="formItem">
+								<t:outputLabel for="serverUrl">
+									<t:htmlTag value="span">
+										<h:outputText value="#{localizedStrings['com.idega.xroad']['server_url']}"/>
+									</t:htmlTag>
+								</t:outputLabel>
+						        <t:inputText id="serverUrl" forceId="true" name="serverUrl" value="#{xRoadSetupService.serverUrl}" />
+					        </div>
+					        <div class="formItem">
+					       		<t:outputLabel for="serverUrl">
+									<t:htmlTag value="span">
+										<h:outputText value="#{localizedStrings['com.idega.xroad']['port']}"/>
+									</t:htmlTag>
+								</t:outputLabel>
+						        <t:inputText id="port" forceId="true" name="port" value="#{xRoadSetupService.port}" />
+					        </div>
+					        <div class="formItem">
+					        	<t:outputLabel for="serverUrl">
+									<t:htmlTag value="span">
+										<h:outputText value="#{localizedStrings['com.idega.xroad']['organization']}"/>
+									</t:htmlTag>
+								</t:outputLabel>
+						        <t:inputText id="organization" forceId="true" name="organization" value="#{xRoadSetupService.organization}" />
+					        </div>
+					        
+					        <div class="buttonLayer">
+					       		<t:commandButton value="#{localizedStrings['com.idega.xroad']['save']}" action="#{xRoadSetupService.saveServer}" />
+					        </div>
+				        </fieldset>
+			        </div>
+		        </div>
+	        </t:div>
+		</h:form>
+	</ws:page>
 </html>
