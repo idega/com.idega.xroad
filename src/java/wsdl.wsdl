@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<definitions name="municipalitydef" targetNamespace="http://municipality.ee.x-rd.net/producer"
+	xmlns:tns="http://municipality.ee.x-rd.net/producer" xmlns:xrd="http://x-rd.net/xsd/xroad.xsd"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+	<types>
+		<schema targetNamespace="http://municipality.ee.x-rd.net/producer"
+			xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://x-rd.net/xsd/xroad.xsd" schemaLocation="http://x-rd.net/xsd/xroad.xsd"/>
+			<element name="caseListRequest" />
+			<element name="caseList">
+				<complexType>
+					<sequence>
+						<element name="request" />
+						<element name="response">
+							<complexType>
+								<sequence>
+									<element name="caseListEntry" minOccurs="0" maxOccurs="unbounded">
+										<annotation>
+											<appinfo>
+												<xrd:title>Case list entry</xrd:title>
+											</appinfo>
+										</annotation>
+										<complexType>
+											<sequence>
+												<element name="caseId" type="string">
+													<annotation>
+														<appinfo>
+															<xrd:title>Unique identifier of the case
+															</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+												<element name="caseName" type="string">
+													<annotation>
+														<appinfo>
+															<xrd:title>Human readable name of the case
+															</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+												<element name="caseStatus" type="string">
+													<annotation>
+														<appinfo>
+															<xrd:title>Status of the case</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+												<element name="statusChangeTime" type="string">
+													<annotation>
+														<appinfo>
+															<xrd:title>When was the last time the status of the
+																cases changed</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+												<element name="statusChangeMessage" type="string">
+													<annotation>
+														<appinfo>
+															<xrd:title>Message related to last status change
+															</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+												<element name="activeOfficialName" type="string"
+													minOccurs="0">
+													<annotation>
+														<appinfo>
+															<xrd:title>Name of the official that is working with
+																the case</xrd:title>
+														</appinfo>
+													</annotation>
+												</element>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</types>
+	<portType name="municipalityporttype">
+		<operation name="caseList">
+			<documentation>
+				<xrd:title>Case List</xrd:title>
+				<xrd:title xml:lang="et">Menetluste nimekiri</xrd:title>
+				<xrd:title xml:lang="en">Case List</xrd:title>
+				<xrd:notes>Returns the list of active cases</xrd:notes>
+			</documentation>
+			<input message="tns:caseListRequest" />
+			<output message="tns:caseList" />
+		</operation>
+	</portType>
+	<binding name="municipalitybinding" type="tns:municipalityporttype">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="caseList">
+			<xrd:version>v1</xrd:version>
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" namespace="http://assert.ee.x-rd.net/producer/" />
+				<soap:header message="tns:improvedHeader" part="consumer"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="producer"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="userId"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="id" use="literal"
+					namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="service"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="issue"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="authenticator"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://assert.ee.x-rd.net/producer/" />
+				<soap:header message="tns:improvedHeader" part="consumer"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="producer"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="userId"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="id" use="literal"
+					namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="service"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="issue"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+				<soap:header message="tns:improvedHeader" part="authenticator"
+					use="literal" namespace="http://x-rd.net/xsd/xroad.xsd" />
+			</output>
+		</operation>
+	</binding>
+	<message name="caseListRequest">
+		<part name="request" element="tns:caseListRequest" />
+	</message>
+	<message name="caseList">
+		<part name="response" element="tns:caseList" />
+	</message>
+	<message name="improvedHeader">
+		<part name="consumer" element="xrd:consumer"  />
+		<part name="producer" element="xrd:producer" />
+		<part name="userId" element="xrd:userId" />
+		<part name="id" element="xrd:id" />
+		<part name="service" element="xrd:service" />
+		<part name="issue" element="xrd:issue" />
+		<part name="authenticator" element="xrd:authenticator" />
+	</message>
+	<service name="municipalityservice">
+		<port name="municipalityport" binding="tns:municipalitybinding">
+			<soap:address location="http://secureproxy/cgi-bin/consumer_proxy" />
+			<xrd:title>eHub</xrd:title>
+			<xrd:title xml:lang="en">eHub</xrd:title>
+			<xrd:address producer="municipality" />
+		</port>
+	</service>
+</definitions> 
+
