@@ -527,7 +527,12 @@ public class MunicipalitybindingStub extends org.apache.axis.client.Stub impleme
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer", "caseListRequest"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer", "caseList"));
+        setHeader("http://x-rd.net/xsd/xroad.xsd", "consumer", "ehub");
+        setHeader("http://x-rd.net/xsd/xroad.xsd", "producer", "municipality");
+        setHeader("http://x-rd.net/xsd/xroad.xsd", "userId", "EE12345678900");
+        setHeader("http://x-rd.net/xsd/xroad.xsd", "id", "municipality.1331730614.52684");
+        setHeader("http://x-rd.net/xsd/xroad.xsd", "service", "municipality.caseList");
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -541,9 +546,9 @@ public class MunicipalitybindingStub extends org.apache.axis.client.Stub impleme
             java.util.Map _output;
             _output = _call.getOutputParams();
             try {
-                request2.value = (java.lang.Object) _output.get(new javax.xml.namespace.QName("", "request"));
+                request2.value = _output.get(new javax.xml.namespace.QName("", "request"));
             } catch (java.lang.Exception _exception) {
-                request2.value = (java.lang.Object) org.apache.axis.utils.JavaUtils.convert(_output.get(new javax.xml.namespace.QName("", "request")), java.lang.Object.class);
+                request2.value = org.apache.axis.utils.JavaUtils.convert(_output.get(new javax.xml.namespace.QName("", "request")), java.lang.Object.class);
             }
             try {
                 response.value = (net.x_rd.ee.municipality.producer.CaseListResponseCaseListEntry[]) _output.get(new javax.xml.namespace.QName("", "response"));
