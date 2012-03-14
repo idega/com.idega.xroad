@@ -65,8 +65,11 @@ public class XRoadSetupService extends DefaultSpringBean {
 
 	@Transactional(readOnly=false)
 	public void saveServer() {
-		if (StringUtil.isEmpty(serverUrl) || StringUtil.isEmpty(port) || StringUtil.isEmpty(organization))
+		if (StringUtil.isEmpty(serverUrl) || StringUtil.isEmpty(port) || StringUtil.isEmpty(organization)) {
+			getLogger().warning("Some of the parameter is not provided or invalid: server: " + serverUrl + ", port: " + port + ", organization: " +
+					organization);
 			return;
+		}
 
 		XRoadServer server = xroadDAO.getServerByUrl(serverUrl);
 		if (server == null) {
