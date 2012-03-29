@@ -6,6 +6,7 @@ import java.util.logging.Level;
 
 import javax.xml.rpc.holders.ObjectHolder;
 
+import net.x_rd.ee.municipality.producer.CaseList;
 import net.x_rd.ee.municipality.producer.CaseListResponseCaseListEntry;
 import net.x_rd.ee.municipality.producer.MunicipalityporttypeProxy;
 import net.x_rd.ee.municipality.producer.holders.CaseListResponseHolder;
@@ -40,7 +41,7 @@ public class CaseDataProvider extends DefaultSpringBean {
 	public CaseListResponseCaseListEntry[] getCaseList() {
 		CaseListResponseHolder result = new CaseListResponseHolder();
 		try {
-			getMunicipalityPort().caseList(null, new ObjectHolder(), result);
+			getMunicipalityPort().caseList(new CaseList("test", new CaseListResponseCaseListEntry[100]), new ObjectHolder(), result);
 		} catch (RemoteException e) {
 			getLogger().log(Level.WARNING, "Error getting case list", e);
 		}
