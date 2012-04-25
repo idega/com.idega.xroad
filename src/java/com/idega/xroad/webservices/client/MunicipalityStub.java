@@ -13,8 +13,8 @@ import org.apache.axis2.AxisFault;
 
 public class MunicipalityStub extends MunicipalityserviceStub {
 
-	public MunicipalityStub() throws AxisFault {
-		super();
+	public MunicipalityStub(String target) throws AxisFault {
+		super(target);
 	}
 
 	@Override
