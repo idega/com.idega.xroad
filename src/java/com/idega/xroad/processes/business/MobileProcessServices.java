@@ -15,7 +15,7 @@ import com.idega.xroad.processes.bean.XRoadProcess;
 public interface MobileProcessServices {
 
 	/**
-	 * Fetches a list of all available proccesses
+	 * Fetches a list of all available processes
 	 *
 	 * @return  {@link Collection} of {@link XRoadProcess}
 	 */
