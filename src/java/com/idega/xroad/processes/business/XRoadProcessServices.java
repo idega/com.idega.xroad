@@ -12,7 +12,7 @@ import com.idega.xroad.processes.bean.XRoadProcess;
  * @author valdas
  *
  */
-public interface MobileProcessServices {
+public interface XRoadProcessServices {
 
 	/**
 	 * Fetches a list of all available processes
