@@ -2,6 +2,7 @@ package com.idega.xroad;
 
 import com.idega.idegaweb.IWBundle;
 import com.idega.idegaweb.IWBundleStartable;
+import com.idega.xroad.business.CasesDataProvider;
 import com.idega.xroad.view.XRoadViewManager;
 
 public class IWBundleStarter implements IWBundleStartable {

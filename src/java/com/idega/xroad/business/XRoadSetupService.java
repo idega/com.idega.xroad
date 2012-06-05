@@ -23,7 +23,7 @@ public class XRoadSetupService extends DefaultSpringBean {
 	private XRoadServer server;
 
 	private String serverUrl, port, organization;
-
+	
 	private XRoadServer getServer() {
 		if (server != null)
 			return server;
@@ -81,6 +81,7 @@ public class XRoadSetupService extends DefaultSpringBean {
 			server.setOrganization(organization);
 			xroadDAO.merge(server);
 		}
+		
 		this.server = null;
 	}
 }

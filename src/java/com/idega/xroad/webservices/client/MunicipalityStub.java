@@ -2,7 +2,7 @@ package com.idega.xroad.webservices.client;
 
 import java.util.Iterator;
 
-import net.x_rd.ee.municipality.producer.MunicipalityserviceStub;
+import net.x_rd.ee.municipality.MunicipalityserviceStub;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
@@ -15,6 +15,10 @@ public class MunicipalityStub extends MunicipalityserviceStub {
 
 	public MunicipalityStub(String target) throws AxisFault {
 		super(target);
+	}
+	
+	public MunicipalityStub() throws AxisFault {
+		super();
 	}
 
 	@Override
