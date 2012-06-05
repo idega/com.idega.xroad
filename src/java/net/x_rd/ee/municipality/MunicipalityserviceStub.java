@@ -127,7 +127,7 @@
      */
     public MunicipalityserviceStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/workspace/services/municipalityservice/" );
+                    this(configurationContext,"http://localhost:8080/workspace/services/municipalityservice" );
                 
     }
 
@@ -136,7 +136,7 @@
      */
     public MunicipalityserviceStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/workspace/services/municipalityservice/" );
+                    this("http://localhost:8080/workspace/services/municipalityservice" );
                 
     }
 

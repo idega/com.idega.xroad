@@ -4,10 +4,10 @@ import java.util.List;
 
 import net.x_rd.ee.municipality.producer.CaseList;
 import net.x_rd.ee.municipality.producer.CaseListEntry_type0;
-import net.x_rd.ee.municipality.producer.Request_type8;
+import net.x_rd.ee.municipality.producer.Request_type11;
 import net.x_rd.ee.municipality.producer.Request_type9;
 import net.x_rd.ee.municipality.producer.SubmitParkingCardStatement;
-import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0;
+import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type1;
 import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponseEntry_type0;
 import net.x_rd.xsd.xroad_xsd.Authenticator;
 import net.x_rd.xsd.xroad_xsd.Consumer;
@@ -56,7 +56,9 @@ public class CasesDataProvider extends DefaultSpringBean {
 		MunicipalityStub stub = new MunicipalityStub(servers.iterator().next()
 				.getUrl());
 		CaseList caseList = (CaseList) getTestObject(CaseList.class);
-		caseList.setRequest(new Request_type8());
+		Request_type9 t = new Request_type9();
+		t.setPersonalCode("123");
+		caseList.setRequest(t);
 
 		Consumer consumer = (Consumer) getTestObject(Consumer.class);
 		consumer.setConsumer("ehub");
@@ -96,8 +98,8 @@ public class CasesDataProvider extends DefaultSpringBean {
 		MunicipalityStub stub = new MunicipalityStub(servers.iterator().next()
 				.getUrl());
 		SubmitParkingCardStatement submitParkingCardStatement = (SubmitParkingCardStatement) getTestObject(SubmitParkingCardStatement.class);
-		Request_type9 r = new Request_type9();
-		SubmitParkingCardStatementEntry_type0 s = new SubmitParkingCardStatementEntry_type0();
+		Request_type11 r = new Request_type11();
+		SubmitParkingCardStatementEntry_type1 s = new SubmitParkingCardStatementEntry_type1();
 		s.setApplicantMobilePhone("1");
 		s.setApplicantPhone("1");
 		s.setOtherRelationExplanationToOwnerOfApartments("1");

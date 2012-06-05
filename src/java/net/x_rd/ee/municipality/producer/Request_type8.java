@@ -24,6 +24,36 @@
                 */
             
 
+                        /**
+                        * field for PersonalCode
+                        */
+
+                        
+                                    protected java.lang.String localPersonalCode ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getPersonalCode(){
+                               return localPersonalCode;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param PersonalCode
+                               */
+                               public void setPersonalCode(java.lang.String param){
+                            
+                                            this.localPersonalCode=param;
+                                    
+
+                               }
+                            
+
      
      
         /**
@@ -83,6 +113,24 @@
                
                    }
                
+                                    namespace = "http://municipality.ee.x-rd.net/producer";
+                                    writeStartElement(null, namespace, "personalCode", xmlWriter);
+                             
+
+                                          if (localPersonalCode==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("personalCode cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localPersonalCode);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
                     xmlWriter.writeEndElement();
                
 
@@ -268,6 +316,15 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
+                                      elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
+                                                                      "personalCode"));
+                                 
+                                        if (localPersonalCode != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPersonalCode));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("personalCode cannot be null!!");
+                                        }
+                                    
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -342,7 +399,32 @@
                 
                     
                     reader.next();
-                  
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","personalCode").equals(reader.getName())){
+                                
+                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
+                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"personalCode" +"  cannot be null");
+                                    }
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setPersonalCode(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             

@@ -1,6 +1,6 @@
 
 /**
- * Request_type9.java
+ * Request_type10.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
@@ -11,44 +11,44 @@
             
 
             /**
-            *  Request_type9 bean class
+            *  Request_type10 bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class Request_type9
+        public  class Request_type10
         implements org.apache.axis2.databinding.ADBBean{
         /* This type was generated from the piece of schema that had
-                name = request_type9
+                name = request_type10
                 Namespace URI = http://municipality.ee.x-rd.net/producer
                 Namespace Prefix = ns4
                 */
             
 
                         /**
-                        * field for PersonalCode
+                        * field for SubmitParkingCardStatementEntry
                         */
 
                         
-                                    protected java.lang.String localPersonalCode ;
+                                    protected net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0 localSubmitParkingCardStatementEntry ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0
                            */
-                           public  java.lang.String getPersonalCode(){
-                               return localPersonalCode;
+                           public  net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0 getSubmitParkingCardStatementEntry(){
+                               return localSubmitParkingCardStatementEntry;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param PersonalCode
+                               * @param param SubmitParkingCardStatementEntry
                                */
-                               public void setPersonalCode(java.lang.String param){
+                               public void setSubmitParkingCardStatementEntry(net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0 param){
                             
-                                            this.localPersonalCode=param;
+                                            this.localSubmitParkingCardStatementEntry=param;
                                     
 
                                }
@@ -102,35 +102,23 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://municipality.ee.x-rd.net/producer");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":request_type9",
+                           namespacePrefix+":request_type10",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "request_type9",
+                           "request_type10",
                            xmlWriter);
                    }
 
                
                    }
                
-                                    namespace = "http://municipality.ee.x-rd.net/producer";
-                                    writeStartElement(null, namespace, "personalCode", xmlWriter);
-                             
-
-                                          if (localPersonalCode==null){
-                                              // write the nil attribute
-                                              
-                                                     throw new org.apache.axis2.databinding.ADBException("personalCode cannot be null!!");
-                                                  
-                                          }else{
-
+                                            if (localSubmitParkingCardStatementEntry==null){
+                                                 throw new org.apache.axis2.databinding.ADBException("submitParkingCardStatementEntry cannot be null!!");
+                                            }
+                                           localSubmitParkingCardStatementEntry.serialize(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","submitParkingCardStatementEntry"),
+                                               xmlWriter);
                                         
-                                                   xmlWriter.writeCharacters(localPersonalCode);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
                     xmlWriter.writeEndElement();
                
 
@@ -316,15 +304,15 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                                      elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
-                                                                      "personalCode"));
-                                 
-                                        if (localPersonalCode != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPersonalCode));
-                                        } else {
-                                           throw new org.apache.axis2.databinding.ADBException("personalCode cannot be null!!");
-                                        }
-                                    
+                            elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
+                                                                      "submitParkingCardStatementEntry"));
+                            
+                            
+                                    if (localSubmitParkingCardStatementEntry==null){
+                                         throw new org.apache.axis2.databinding.ADBException("submitParkingCardStatementEntry cannot be null!!");
+                                    }
+                                    elementList.add(localSubmitParkingCardStatementEntry);
+                                
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -349,9 +337,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static Request_type9 parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            Request_type9 object =
-                new Request_type9();
+        public static Request_type10 parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Request_type10 object =
+                new Request_type10();
 
             int event;
             java.lang.String nillableValue = null;
@@ -375,10 +363,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"request_type9".equals(type)){
+                            if (!"request_type10".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (Request_type9)net.x_rd.ee.municipality.producer.ExtensionMapper.getTypeObject(
+                                return (Request_type10)net.x_rd.ee.municipality.producer.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -403,18 +391,9 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","personalCode").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","submitParkingCardStatementEntry").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"personalCode" +"  cannot be null");
-                                    }
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setPersonalCode(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                                object.setSubmitParkingCardStatementEntry(net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0.Factory.parse(reader));
                                               
                                         reader.next();
                                     

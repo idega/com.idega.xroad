@@ -30,14 +30,14 @@
                         */
 
                         
-                                    protected org.apache.axiom.om.OMElement localRequest ;
+                                    protected net.x_rd.ee.municipality.producer.Request_type10 localRequest ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return org.apache.axiom.om.OMElement
+                           * @return net.x_rd.ee.municipality.producer.Request_type10
                            */
-                           public  org.apache.axiom.om.OMElement getRequest(){
+                           public  net.x_rd.ee.municipality.producer.Request_type10 getRequest(){
                                return localRequest;
                            }
 
@@ -47,7 +47,7 @@
                                * Auto generated setter method
                                * @param param Request
                                */
-                               public void setRequest(org.apache.axiom.om.OMElement param){
+                               public void setRequest(net.x_rd.ee.municipality.producer.Request_type10 param){
                             
                                             this.localRequest=param;
                                     
@@ -144,23 +144,12 @@
                
                    }
                
-                                    namespace = "http://municipality.ee.x-rd.net/producer";
-                                    writeStartElement(null, namespace, "request", xmlWriter);
-                             
-
-                                          if (localRequest==null){
-                                              // write the nil attribute
-                                              
-                                                     throw new org.apache.axis2.databinding.ADBException("request cannot be null!!");
-                                                  
-                                          }else{
-
-                                        localRequest.serialize(xmlWriter);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
+                                            if (localRequest==null){
+                                                 throw new org.apache.axis2.databinding.ADBException("request cannot be null!!");
+                                            }
+                                           localRequest.serialize(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","request"),
+                                               xmlWriter);
+                                        
                                             if (localResponse==null){
                                                  throw new org.apache.axis2.databinding.ADBException("response cannot be null!!");
                                             }
@@ -352,15 +341,15 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                                      elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
+                            elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
                                                                       "request"));
-                                 
-                                        if (localRequest != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRequest));
-                                        } else {
-                                           throw new org.apache.axis2.databinding.ADBException("request cannot be null!!");
-                                        }
-                                    
+                            
+                            
+                                    if (localRequest==null){
+                                         throw new org.apache.axis2.databinding.ADBException("request cannot be null!!");
+                                    }
+                                    elementList.add(localRequest);
+                                
                             elementList.add(new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer",
                                                                       "response"));
                             
@@ -448,21 +437,9 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                   if (reader.isStartElement()){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","request").equals(reader.getName())){
                                 
-                                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                    if ("true".equals(nillableValue) || "1".equals(nillableValue)){
-                                        throw new org.apache.axis2.databinding.ADBException("The element: "+"request" +"  cannot be null");
-                                    }
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                                org.apache.axiom.om.OMFactory fac = org.apache.axiom.om.OMAbstractFactory.getOMFactory();
-                                                org.apache.axiom.om.OMNamespace omNs = fac.createOMNamespace("http://municipality.ee.x-rd.net/producer", "");
-                                                org.apache.axiom.om.OMElement _valueRequest = fac.createOMElement("request", omNs);
-                                                _valueRequest.addChild(fac.createOMText(_valueRequest, content));
-                                                object.setRequest(_valueRequest);
+                                                object.setRequest(net.x_rd.ee.municipality.producer.Request_type10.Factory.parse(reader));
                                               
                                         reader.next();
                                     

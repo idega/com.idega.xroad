@@ -30,14 +30,14 @@
                         */
 
                         
-                                    protected net.x_rd.ee.municipality.producer.Request_type9 localRequest ;
+                                    protected net.x_rd.ee.municipality.producer.Request_type11 localRequest ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return net.x_rd.ee.municipality.producer.Request_type9
+                           * @return net.x_rd.ee.municipality.producer.Request_type11
                            */
-                           public  net.x_rd.ee.municipality.producer.Request_type9 getRequest(){
+                           public  net.x_rd.ee.municipality.producer.Request_type11 getRequest(){
                                return localRequest;
                            }
 
@@ -47,7 +47,7 @@
                                * Auto generated setter method
                                * @param param Request
                                */
-                               public void setRequest(net.x_rd.ee.municipality.producer.Request_type9 param){
+                               public void setRequest(net.x_rd.ee.municipality.producer.Request_type11 param){
                             
                                             this.localRequest=param;
                                     
@@ -394,7 +394,7 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("http://municipality.ee.x-rd.net/producer","request").equals(reader.getName())){
                                 
-                                                object.setRequest(net.x_rd.ee.municipality.producer.Request_type9.Factory.parse(reader));
+                                                object.setRequest(net.x_rd.ee.municipality.producer.Request_type11.Factory.parse(reader));
                                               
                                         reader.next();
                                     
