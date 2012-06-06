@@ -2,6 +2,7 @@ package com.idega.xroad.business;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import com.idega.xroad.bean.Case;
 import com.idega.xroad.bean.Message;
@@ -28,6 +29,8 @@ public interface XroadGateway {
 	public Collection<Case> getCasesByCriteria(String serviceId,String caseNumber, 
 			String description, String name, String personalId, List<String> statuses, String dateFrom, String dateTo, 
 			String ownerId, List<String> groups, Boolean simpleCases, Boolean notGeneralCases) throws Exception;
+	
+	public String submitParkingCardStatement(String serviceId, String userId, Map<String, Object> data) throws Exception;
 	
 }
 
