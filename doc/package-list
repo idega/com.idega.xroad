@@ -1,2 +1,14 @@
+com.idega.xroad
+com.idega.xroad.bean
+com.idega.xroad.business
+com.idega.xroad.data
+com.idega.xroad.data.impl
 com.idega.xroad.processes.bean
 com.idega.xroad.processes.business
+com.idega.xroad.view
+com.idega.xroad.webservices.client
+net.x_rd.ee.municipality
+net.x_rd.ee.municipality.producer
+net.x_rd.xsd.xroad_xsd
+org.w3.www._2005._05.xmlmime
+org.w3.www.xml._1998.namespace

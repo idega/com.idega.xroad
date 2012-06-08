@@ -6,15 +6,29 @@ import com.idega.user.bean.UserDataBean;
 import com.idega.user.business.UserApplicationEngine;
 import com.idega.util.expression.ELUtil;
 
+/**
+ * Data structure to represent user entity
+ *
+ * @author valdas
+ *
+ */
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1514809950328524234L;
-	
+
 	private String id, email, phone, name;
-	public User(){
+
+	public User() {
 		super();
 	}
-	
+
+	public User(String id, String email, String phone, String name) {
+		this.id = id;
+		this.email = email;
+		this.phone = phone;
+		this.name = name;
+	}
+
 	public User(com.idega.user.data.User user){
 		id = user.getId();
 		UserApplicationEngine userApplicationEngine = ELUtil.getInstance().getBean(UserApplicationEngine.class);
@@ -33,7 +47,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -68,5 +82,5 @@ public class User implements Serializable {
 		}
 		return false;
 	}
-	
+
 }

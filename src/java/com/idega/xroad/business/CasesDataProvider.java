@@ -52,6 +52,7 @@ public class CasesDataProvider extends DefaultSpringBean implements
 		return (org.apache.axis2.databinding.ADBBean) type.newInstance();
 	}
 
+	@Override
 	public Collection<Case> getCasesByUser(String serviceId, String userId)
 			throws Exception {
 
@@ -99,7 +100,7 @@ public class CasesDataProvider extends DefaultSpringBean implements
 			CaseListEntry_type0 c0 = userCases[i];
 			Case c = new Case();
 			c.setStatus(c0.getCaseStatus());
-			c.setId(c0.getCaseId());
+			c.setId(Integer.valueOf(c0.getCaseId()));
 			c.setSubject(c0.getCaseName());
 			result.add(c);
 		}
@@ -107,6 +108,7 @@ public class CasesDataProvider extends DefaultSpringBean implements
 		return result;
 	}
 
+	@Override
 	public String submitParkingCardStatement(String serviceId, String userId,
 			Map<String, Object> data) throws Exception {
 		List<XRoadServer> servers = getXRoadDAO().getAllServers();
@@ -172,48 +174,56 @@ public class CasesDataProvider extends DefaultSpringBean implements
 		return responseEntry.getProcessId();
 	}
 
+	@Override
 	public Collection<Message> getMessagesByUser(String serviceId, String userId)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Collection<Message> getUnreadMessagesByUser(String serviceId,
 			String userId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Collection<Case> getUnreadCasesByUser(String serviceId, String userId)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Message getMessage(String serviceId, String userId, String messageId)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Case getCase(String serviceId, String userId, String caseId)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public void setCaseRead(String serviceId, String userId, String caseId,
 			Boolean read) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
 
+	@Override
 	public void setMessageRead(String serviceId, String userId,
 			String messageId, Boolean read) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
 
+	@Override
 	public Collection<Case> getCasesByCriteria(String serviceId,
 			String caseNumber, String description, String name,
 			String personalId, List<String> statuses, String dateFrom,

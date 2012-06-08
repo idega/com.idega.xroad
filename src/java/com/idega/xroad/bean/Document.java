@@ -6,27 +6,39 @@ import java.util.Date;
 import com.idega.jbpm.exe.BPMDocument;
 import com.idega.util.CoreConstants;
 
+/**
+ * Data structure to hold BPM related data for the case
+ *
+ * @author valdas
+ *
+ */
 public class Document implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = 3656106891236803553L;
 
 	private String name, submittedByName, viewUri;
 	private Date created;
-	
-	public Document(){
+
+	public Document() {
 		super();
 	}
-	
-	public Document(BPMDocument document){
+
+	public Document(String name, String submittedByName, String viewUri, Date created) {
+		this.name = name;
+		this.submittedByName = submittedByName;
+		this.viewUri = viewUri;
+		this.created = created;
+	}
+
+	public Document(BPMDocument document) {
 		name = document.getDocumentName();
-		if(CoreConstants.EMPTY.equals(name)){
+		if (CoreConstants.EMPTY.equals(name))
 			name = null;
-		}
+
 		submittedByName = document.getSubmittedByName();
-		if(CoreConstants.EMPTY.equals(submittedByName)){
+		if(CoreConstants.EMPTY.equals(submittedByName))
 			submittedByName = null;
-		}
+
 		created = document.getCreateDate();
 	}
 
@@ -61,6 +73,6 @@ public class Document implements Serializable {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
-	
-	
+
+
 }

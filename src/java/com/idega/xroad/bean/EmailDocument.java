@@ -5,16 +5,30 @@ import java.io.Serializable;
 import com.idega.jbpm.exe.BPMEmailDocument;
 import com.idega.util.CoreConstants;
 
+/**
+ * Data structure to hold communication via emails about the case
+ *
+ * @author valdas
+ *
+ */
 public class EmailDocument extends Document implements Serializable {
 
 	private static final long serialVersionUID = -6925765377033732072L;
 
 	private String subject, fromPerson, fromAddress;
-	
-	public EmailDocument(){
+
+	public EmailDocument() {
 		super();
 	}
-	
+
+	public EmailDocument(String subject, String fromPerson, String fromAddress) {
+		this();
+
+		this.subject = subject;
+		this.fromPerson = fromPerson;
+		this.fromAddress = fromAddress;
+	}
+
 	public EmailDocument(BPMEmailDocument document){
 		super(document);
 		subject = document.getSubject();
