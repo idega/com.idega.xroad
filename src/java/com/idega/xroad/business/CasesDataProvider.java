@@ -33,10 +33,11 @@ import com.idega.xroad.data.XRoadDAO;
 import com.idega.xroad.data.XRoadServer;
 import com.idega.xroad.webservices.client.MunicipalityStub;
 
-@Service
+@Service(CasesDataProvider.BEAN_NAME)
 @Scope(BeanDefinition.SCOPE_SINGLETON)
-public class CasesDataProvider extends DefaultSpringBean implements
-		XroadGateway {
+public class CasesDataProvider extends DefaultSpringBean implements XroadGateway {
+
+	public static final String BEAN_NAME = "xRoadWebServices";
 
 	@Autowired
 	private XRoadDAO xroadDAO;

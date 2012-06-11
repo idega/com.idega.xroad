@@ -6,12 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.idega.block.process.presentation.beans.CasePresentation;
-import com.idega.util.expression.ELUtil;
-import com.idega.xroad.processes.business.XRoadProcessServices;
-
 import net.x_rd.ee.municipality.producer.CaseListEntry_type0;
 import net.x_rd.ee.municipality.producer.CaseListResponse;
 import net.x_rd.ee.municipality.producer.Request_type10;
@@ -22,6 +16,15 @@ import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type0;
 import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementEntry_type1;
 import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponse;
 import net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponseEntry_type0;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.idega.block.process.presentation.beans.CasePresentation;
+import com.idega.user.data.User;
+import com.idega.util.ArrayUtil;
+import com.idega.util.expression.ELUtil;
+import com.idega.xroad.processes.business.XRoadProcessServices;
 
 /**
  * MunicipalityserviceSkeleton java skeleton for the axisService
@@ -43,6 +46,7 @@ public class MunicipalityserviceSkeleton implements
 		return xroadProcessesServices;
 	}
 
+	@Override
 	public net.x_rd.ee.municipality.producer.CaseListResponse caseList(
 			net.x_rd.ee.municipality.producer.CaseList caseList) {
 
@@ -56,7 +60,9 @@ public class MunicipalityserviceSkeleton implements
 			e.setCaseStatus(c.getCaseStatusLocalized());
 			e.setStatusChangeTime("2012-06-05 08:00:00");
 			e.setStatusChangeMessage("Status change message...");
-			e.setActiveOfficialName(c.getHandledBy().getName());
+			User handler = c.getHandledBy();
+			if (handler != null)
+				e.setActiveOfficialName(handler.getName());
 			cases.add(e);
 		}
 
@@ -65,7 +71,8 @@ public class MunicipalityserviceSkeleton implements
 		req.setPersonalCode(caseList.getRequest().getPersonalCode());
 		r.setRequest(req);
 		Response_type6 t = new Response_type6();
-		t.setCaseListEntry((CaseListEntry_type0[]) cases.toArray());
+		CaseListEntry_type0[] casesArray = ArrayUtil.convertListToArray(cases);
+		t.setCaseListEntry(casesArray);
 		r.setResponse(t);
 		return r;
 	}
@@ -73,6 +80,8 @@ public class MunicipalityserviceSkeleton implements
 	/**
 	 * Auto generated method signature
 	 */
+	@Override
+	@Transactional(readOnly=false)
 	public net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponse submitParkingCardStatement(
 			net.x_rd.ee.municipality.producer.SubmitParkingCardStatement submitParkingCardStatement) {
 
@@ -100,23 +109,24 @@ public class MunicipalityserviceSkeleton implements
 
 		Map<String, Object> processData = new HashMap<String, Object>();
 		processData
-				.put("applicantMobilePhone", type1.getApplicantMobilePhone());
-		processData.put("applicantPhone", type1.getApplicantPhone());
-		processData.put("otherRelationExplanationToOwnerOfApartments",
+				.put("string_applicantMobilePhone", type1.getApplicantMobilePhone());
+		processData.put("string_applicantPhone", type1.getApplicantPhone());
+		processData.put("string_otherRelationExplanationToOwnerOfApartments",
 				type1.getOtherRelationExplanationToOwnerOfApartments());
-		processData.put("ownerAddress", type1.getOwnerAddress());
-		processData.put("ownerAppartmentNumber",
+		processData.put("string_ownerAddress", type1.getOwnerAddress());
+		processData.put("string_ownerAppartmentNumber",
 				type1.getOwnerAppartmentNumber());
-		processData.put("ownerAttachments", type1.getOwnerAttachments());
-		processData.put("ownerCommune", type1.getOwnerCommune());
-		processData.put("ownerEmailAddress", type1.getOwnerEmailAddress());
-		processData.put("ownerFullName", type1.getOwnerFullName());
-		processData.put("ownerPersonalId", type1.getOwnerPersonalId());
-		processData.put("ownerPostCode", type1.getOwnerPostCode());
-		processData.put("parkingCardComment", type1.getParkingCardComment());
-		processData.put("relationsToOwnerOfApartments",
+		processData.put("files_ownerAttachments", type1.getOwnerAttachments());
+		processData.put("string_ownerCommune", type1.getOwnerCommune());
+		processData.put("string_ownerEmailAddress", type1.getOwnerEmailAddress());
+		processData.put("string_repeatedOwnerEmailAddress", type1.getOwnerEmailAddress());
+		processData.put("string_ownerFullName", type1.getOwnerFullName());
+		processData.put("string_ownerPersonalId", type1.getOwnerPersonalId());
+		processData.put("string_ownerPostCode", type1.getOwnerPostCode());
+		processData.put("string_parkingCardComment", type1.getParkingCardComment());
+		processData.put("string_relationsToOwnerOfApartments",
 				type1.getRelationsToOwnerOfApartments());
-		processData.put("vehicleRegistrationNumber",
+		processData.put("string_vehicleRegistrationNumber",
 				type1.getVehicleRegistrationNumber());
 
 		Long processId = getXRoadProcessServices().doSubmitProcess(
@@ -134,9 +144,10 @@ public class MunicipalityserviceSkeleton implements
 
 	/**
 	 * Auto generated method signature
-	 * 
+	 *
 	 */
 
+	@Override
 	public net.x_rd.ee.municipality.producer.AllowedMethodsResponse allowedMethods(
 			net.x_rd.ee.municipality.producer.AllowedMethods allowedMethods) {
 		// TODO : fill this with the necessary business logic
