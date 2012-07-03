@@ -101,7 +101,7 @@ public class CasesDataProvider extends DefaultSpringBean implements XroadGateway
 			CaseListEntry_type0 c0 = userCases[i];
 			Case c = new Case();
 			c.setStatus(c0.getCaseStatus());
-			c.setId(Integer.valueOf(c0.getCaseId()));
+			c.setIdentifier(c0.getCaseId());
 			c.setSubject(c0.getCaseName());
 			result.add(c);
 		}

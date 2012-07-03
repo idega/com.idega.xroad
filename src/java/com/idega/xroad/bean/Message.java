@@ -17,7 +17,7 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 2443260681172469343L;
 
 	private Integer id;
-	private String subject, body, number, status;
+	private String identifier, subject, body, number, status;
 	private Timestamp created;
 	private User owner;
 
@@ -36,6 +36,7 @@ public class Message implements Serializable {
 		if (!StringUtil.isEmpty(id))
 			this.id = Integer.valueOf(id);
 
+		this.identifier = theCase.getCaseIdentifier();
 		this.number = theCase.getCaseNumber();
 		this.created = theCase.getCreated();
 		this.status = theCase.getStatus();
@@ -97,4 +98,15 @@ public class Message implements Serializable {
 		this.owner = owner;
 	}
 
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+
+	public String toString() {
+		return "ID: " + getId() + ", identifier: " + getIdentifier();
+	}
 }
