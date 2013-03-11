@@ -40,18 +40,18 @@ public class MunicipalityserviceSkeleton implements MunicipalityserviceSkeletonI
 
 	@Autowired
 	private BPMContext bpmContext;
-	
+
 	private XRoadProcessServices getXRoadProcessServices() {
 		if (xroadProcessesServices == null)
 			ELUtil.getInstance().autowire(this);
 
 		return xroadProcessesServices;
 	}
-	
+
 	private BPMContext getBPMContext() {
 		if (bpmContext == null)
 			ELUtil.getInstance().autowire(this);
-		
+
 		return bpmContext;
 	}
 
@@ -94,8 +94,8 @@ public class MunicipalityserviceSkeleton implements MunicipalityserviceSkeletonI
 	public net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponse submitParkingCardStatement(
 			final net.x_rd.ee.municipality.producer.SubmitParkingCardStatement submitParkingCardStatement) {
 
-		SubmitParkingCardStatementResponse response = getBPMContext().execute(new JbpmCallback() {
-			
+		SubmitParkingCardStatementResponse response = getBPMContext().execute(new JbpmCallback<SubmitParkingCardStatementResponse>() {
+
 			@Override
 			public SubmitParkingCardStatementResponse doInJbpm(JbpmContext context) throws JbpmException {
 				SubmitParkingCardStatementResponse r = new SubmitParkingCardStatementResponse();
@@ -155,8 +155,8 @@ public class MunicipalityserviceSkeleton implements MunicipalityserviceSkeletonI
 				return r;
 			}
 		});
-		
-		return response;		
+
+		return response;
 	}
 
 	/**
