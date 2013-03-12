@@ -1,61 +1,34 @@
 package com.idega.xroad.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import com.idega.jbpm.exe.BPMDocument;
-import com.idega.util.CoreConstants;
+import com.idega.util.StringUtil;
 
-/**
- * Data structure to hold BPM related data for the case
- *
- * @author valdas
- *
- */
-public class Document implements Serializable {
+public class Document extends Task {
 
-	private static final long serialVersionUID = 3656106891236803553L;
+	private static final long serialVersionUID = -592111244656387698L;
 
-	private String name, submittedByName, viewUri;
-	private Date created;
+	private String submittedByName;
 
 	public Document() {
 		super();
 	}
 
-	public Document(String name, String submittedByName, String viewUri, Date created) {
-		this.name = name;
+	public Document(String id, String name, String submittedByName, String viewUri, Date created) {
+		super(id, name, viewUri, created);
+
 		this.submittedByName = submittedByName;
-		this.viewUri = viewUri;
-		this.created = created;
+		if (StringUtil.isEmpty(this.submittedByName))
+			this.submittedByName = null;
 	}
 
 	public Document(BPMDocument document) {
-		name = document.getDocumentName();
-		if (CoreConstants.EMPTY.equals(name))
-			name = null;
+		super(document);
 
 		submittedByName = document.getSubmittedByName();
-		if(CoreConstants.EMPTY.equals(submittedByName))
+		if (StringUtil.isEmpty(submittedByName))
 			submittedByName = null;
-
-		created = document.getCreateDate();
-	}
-
-	public String getViewUri() {
-		return viewUri;
-	}
-
-	public void setViewUri(String viewUri) {
-		this.viewUri = viewUri;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSubmittedByName() {
@@ -66,13 +39,6 @@ public class Document implements Serializable {
 		this.submittedByName = submittedByName;
 	}
 
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
 
 
 }

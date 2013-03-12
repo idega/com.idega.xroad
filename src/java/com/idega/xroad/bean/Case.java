@@ -1,7 +1,7 @@
 package com.idega.xroad.bean;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 import com.idega.util.ListUtil;
@@ -16,9 +16,10 @@ public class Case extends Message {
 
 	private static final long serialVersionUID = -6956277602415027913L;
 
-	private List<Document> tasks, documents;
-	private List<EmailDocument> emails;
-	private Collection<User> usersConnectedToProcess;
+	private List<Task> tasks;
+	private List<Document> documents;
+	private List<Email> emails;
+	private List<User> usersConnectedToProcess;
 
 	public Case() {
 		super();
@@ -28,11 +29,11 @@ public class Case extends Message {
 		super(theCase);
 	}
 
-	public List<Document> getTasks() {
+	public List<Task> getTasks() {
 		return tasks;
 	}
 
-	public void setTasks(List<Document> tasks) {
+	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
 
@@ -44,11 +45,11 @@ public class Case extends Message {
 		this.documents = documents;
 	}
 
-	public List<EmailDocument> getEmails() {
+	public List<Email> getEmails() {
 		return emails;
 	}
 
-	public void setEmails(List<EmailDocument> emails) {
+	public void setEmails(List<Email> emails) {
 		this.emails = emails;
 	}
 
@@ -56,16 +57,16 @@ public class Case extends Message {
 		return usersConnectedToProcess;
 	}
 
-	public void setUsersConnectedToProcess(Collection<User> usersConnectedToProcess) {
+	public void setUsersConnectedToProcess(List<User> usersConnectedToProcess) {
 		this.usersConnectedToProcess = usersConnectedToProcess;
 	}
 
-	public void setIdegaUsersConnectedToProcess(Collection<com.idega.user.data.User> idegaUsers) {
-		if (ListUtil.isEmpty(idegaUsers))
+	public void setUsersConnectedToProcess(Collection<com.idega.user.data.User> users) {
+		if (ListUtil.isEmpty(users))
 			return;
 
-		usersConnectedToProcess = new HashSet<User>(idegaUsers.size());
-		for (com.idega.user.data.User user: idegaUsers) {
+		usersConnectedToProcess = new ArrayList<User>(users.size());
+		for (com.idega.user.data.User user: users) {
 			User connectedUser = new User(user);
 			usersConnectedToProcess.add(connectedUser);
 		}
