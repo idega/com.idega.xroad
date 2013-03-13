@@ -16,15 +16,14 @@ public class Message implements Serializable {
 
 	private static final long serialVersionUID = 2443260681172469343L;
 
-	private Integer id;
-	private String identifier, subject, body, number, status;
+	private String id, identifier, subject, body, number, status;
 	private Timestamp created;
 	private User owner;
 
 	public Message() {
 		super();
 
-		this.id = new Random().nextInt();
+		this.id = String.valueOf(new Random().nextInt());
 	}
 
 	public Message(com.idega.block.process.data.Case theCase) {
@@ -34,7 +33,7 @@ public class Message implements Serializable {
 
 		String id = theCase.getId();
 		if (!StringUtil.isEmpty(id))
-			this.id = Integer.valueOf(id);
+			this.id = id;
 
 		this.identifier = theCase.getCaseIdentifier();
 		this.number = theCase.getCaseNumber();
@@ -42,11 +41,11 @@ public class Message implements Serializable {
 		this.status = theCase.getStatus();
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -106,6 +105,7 @@ public class Message implements Serializable {
 		this.identifier = identifier;
 	}
 
+	@Override
 	public String toString() {
 		return "ID: " + getId() + ", identifier: " + getIdentifier();
 	}
