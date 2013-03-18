@@ -94,7 +94,7 @@ public class MunicipalityserviceSkeleton implements MunicipalityserviceSkeletonI
 	public net.x_rd.ee.municipality.producer.SubmitParkingCardStatementResponse submitParkingCardStatement(
 			final net.x_rd.ee.municipality.producer.SubmitParkingCardStatement submitParkingCardStatement) {
 
-		SubmitParkingCardStatementResponse response = getBPMContext().execute(new JbpmCallback<SubmitParkingCardStatementResponse>() {
+		SubmitParkingCardStatementResponse response = getBPMContext().execute(new JbpmCallback() {
 
 			@Override
 			public SubmitParkingCardStatementResponse doInJbpm(JbpmContext context) throws JbpmException {
