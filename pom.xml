@@ -7,7 +7,6 @@
   	<version>5.0.0-SNAPSHOT</version>
   </parent>
   <packaging>jar</packaging>
-  <groupId>com.idega.block.addon</groupId>
   <artifactId>com.idega.xroad</artifactId>
   <name>Cybernetica X-Road integration</name>
   <inceptionYear>2012</inceptionYear>
