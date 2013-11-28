@@ -18,7 +18,7 @@ public class XRoadViewManager implements Singleton {
 	private IWMainApplication iwma;
 	private ViewNode xroadRootNode;
 
-	private XRoadViewManager(IWMainApplication iwma) {
+	protected XRoadViewManager(IWMainApplication iwma) {
 		this.iwma = iwma;
 	}
 
