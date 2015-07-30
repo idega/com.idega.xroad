@@ -87,11 +87,6 @@
         <artifactId>jsr311-api</artifactId>
         <version>${javax.ws.rs-version}</version>
     </dependency>
-    <dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>
-		<version>${javax.servlet-servlet-api-version}</version>
-	</dependency>
     
     <dependency>
 		<groupId>org.apache.ws.xmlschema</groupId>
